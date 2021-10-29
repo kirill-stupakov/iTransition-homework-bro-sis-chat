@@ -20,17 +20,19 @@ const statsSchema = new mongoose.Schema({
 
 const statsModel = mongoose.model("stats", statsSchema);
 
-const getStats = async () => {
+const connectToDatabase = async () => {
   await mongoose.connect(databaseKey);
   const db = mongoose.connection;
   db.on("error", console.error.bind(console, "MongoDB connection error:"));
+};
+
+const getStats = async () => {
+  await connectToDatabase();
   return await statsModel.findOne();
 };
 
 const updateMessage = async (message) => {
-  await mongoose.connect(databaseKey);
-  const db = mongoose.connection;
-  db.on("error", console.error.bind(console, "MongoDB connection error:"));
+  await connectToDatabase();
 
   var update = {
     $inc: {
