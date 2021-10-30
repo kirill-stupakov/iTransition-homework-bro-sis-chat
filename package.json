@@ -1,0 +1,22 @@
+{
+  "name": "itransition-homework-bro-sis-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "build": "cd client && yarn && yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirill-stupakov/iTransition-homework-bro-sis-chat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kirill-stupakov/iTransition-homework-bro-sis-chat/issues"
+  },
+  "homepage": "https://github.com/kirill-stupakov/iTransition-homework-bro-sis-chat#readme"
+}
