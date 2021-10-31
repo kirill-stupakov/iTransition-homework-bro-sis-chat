@@ -47,4 +47,4 @@ const updateMessage = async (message) => {
   return await statsModel.findOneAndUpdate({}, update);
 };
 
-module.exports = { getStats, updateMessage };
+module.exports = { getStats, getStats, updateMessage };

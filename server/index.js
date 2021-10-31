@@ -1,8 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+const http = require("http");
+const socketIO = require("socket.io");
 const { getStats, updateMessage } = require("./db");
 
 const app = express();
+
+const server = http.createServer(app);
+const io = socketIO(server, { cors: { origin: "*" } });
 
 app.use(cors());
 
@@ -12,13 +17,21 @@ app.get("/api/totalMessagesSent", (req, res) => {
   getStats().then((stats) => res.json(stats.totalMessagesSent));
 });
 
-app.get("/api/lastMessage", (req, res) => {
-  getStats().then((stats) => res.json(stats.lastMessage));
-});
+io.on("connection", (socket) => {
+  getStats().then((stats) => socket.emit("message", stats.lastMessage));
+  console.log(`User ${socket.id} connected`);
 
-app.post("/api/lastMessage", (req, res) => {
-  updateMessage(req.body).then((stats) => res.json(req.body));
+  socket.on("message", (message) => {
+    updateMessage(message).then(() => {
+      io.sockets.emit("message", message);
+    });
+  });
+
+  socket.on("disconnect", () => {
+    console.log(`User ${socket.id} disconnected`);
+  });
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+server.listen(PORT, () => console.log(`Server started on port ${PORT}`));
