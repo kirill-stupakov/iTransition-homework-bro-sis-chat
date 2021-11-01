@@ -13,18 +13,22 @@ app.use(cors());
 
 app.use(express.json());
 
-app.get("/api/totalMessagesSent", (req, res) => {
-  getStats().then((stats) => res.json(stats.totalMessagesSent));
-});
-
 io.on("connection", (socket) => {
-  getStats().then((stats) => socket.emit("message", stats.lastMessage));
   console.log(`User ${socket.id} connected`);
 
+  socket.on("getMessage", () =>
+    getStats().then((stats) => socket.emit("message", stats.lastMessage))
+  );
+
   socket.on("message", (message) => {
-    updateMessage(message).then(() => {
-      io.sockets.emit("message", message);
+    updateMessage(message).then((res) => {
+      io.sockets.emit("message", res.lastMessage);
+      io.sockets.emit("stats", res.totalMessagesSent);
     });
+  });
+
+  socket.on("getStats", () => {
+    getStats().then((stats) => socket.emit("stats", stats.totalMessagesSent));
   });
 
   socket.on("disconnect", () => {

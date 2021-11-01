@@ -11,8 +11,8 @@ interface Props {
 
 const SigninPanel: React.FC<Props> = ({ setUserName, socket }) => {
   return (
-    <div>
-      <h1>Please, sign in</h1>
+    <>
+      <h3>Please, sign in to send messages</h3>
       <GoogleLogin
         clientId="478708871018-ajcn2uoal7polm30lch28j38luopscbd.apps.googleusercontent.com"
         buttonText="Google"
@@ -34,7 +34,7 @@ const SigninPanel: React.FC<Props> = ({ setUserName, socket }) => {
         callback={(res: any) => setUserName(res.name)}
         autoLoad={true}
       /> */}
-    </div>
+    </>
   );
 };
 

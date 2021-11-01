@@ -3,3 +3,8 @@ export type message = {
   time: string;
   body: string;
 };
+
+export type stats = {
+  bro: number;
+  sis: number;
+};

@@ -35,7 +35,7 @@ const AuthorizedPanel: React.FC<Props> = ({ userName, socket, onLogOut }) => {
       {messages.map((message) => (
         <button
           type="button"
-          className="btn btn-primary px-4 rounded m-3 shadow-sm"
+          className="btn btn-primary px-4 rounded mx-3 shadow-sm"
           onClick={() => sendMessage(message)}
           key={message}
         >
@@ -44,7 +44,7 @@ const AuthorizedPanel: React.FC<Props> = ({ userName, socket, onLogOut }) => {
       ))}
       <button
         type="button"
-        className="btn btn-danger px-4 rounded m-3 shadow-sm"
+        className="btn btn-danger px-4 rounded mx-3 shadow-sm"
         onClick={onLogOut}
       >
         Log out

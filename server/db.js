@@ -44,7 +44,8 @@ const updateMessage = async (message) => {
     update.$inc = { "totalMessagesSent.sis": 1 };
   }
 
-  return await statsModel.findOneAndUpdate({}, update);
+  await statsModel.findOneAndUpdate({}, update);
+  return await statsModel.findOne();
 };
 
 module.exports = { getStats, getStats, updateMessage };

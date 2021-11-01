@@ -9,7 +9,7 @@ interface Props {
 const Stats: React.FC<Props> = ({ socket }) => {
   const [stats, setStats] = useState<stats | null>(null);
 
-  const displayStats = stats || { bro: "Loading..", sis: "Loading..." };
+  const displayStats = stats || { bro: "?", sis: "?" };
 
   useEffect(() => {
     socket.on("stats", (res: stats) => setStats(res));
@@ -17,14 +17,17 @@ const Stats: React.FC<Props> = ({ socket }) => {
   }, []);
 
   return (
-    <>
-      <div className="bg-primary rounded p-2 m-2 text-white">
-        Bro: {displayStats.bro}
-      </div>
-      <div className="bg-primary rounded p-2 m-2 text-white">
-        Sis: {displayStats.sis}
-      </div>
-    </>
+    <h5>
+      Total messages sent:{" "}
+      <span className="bg-secondary rounded py-1 px-2 text-white">
+        {displayStats.bro}
+      </span>{" "}
+      bros and{" "}
+      <span className="bg-secondary rounded py-1 px-2 text-white">
+        {displayStats.sis}
+      </span>{" "}
+      sisses.
+    </h5>
   );
 };
 
