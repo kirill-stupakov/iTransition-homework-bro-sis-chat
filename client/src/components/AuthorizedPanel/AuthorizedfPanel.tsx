@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import socketIO from "socket.io-client";
 
 import Button from "../Button/Button";
 import Message from "../Message/Message";
@@ -7,14 +6,15 @@ import { message } from "../../types";
 
 interface Props {
   userName: string;
+  socket: any;
+  onLogOut: () => void;
 }
 
-const socket = socketIO("http://localhost:5000");
-
-const AuthorizedPanel: React.FC<Props> = ({ userName }) => {
+const AuthorizedPanel: React.FC<Props> = ({ userName, socket, onLogOut }) => {
   const [lastMessage, setLastMessage] = useState<message | null>(null);
 
   useEffect(() => {
+    socket.emit("getMessage", null);
     socket.on("message", (message: message) => {
       setLastMessage(message);
     });
@@ -27,11 +27,28 @@ const AuthorizedPanel: React.FC<Props> = ({ userName }) => {
       time: new Date().toISOString(),
     });
 
+  const messages = ["Bro!", "Sis!"];
+
   return (
     <>
       <Message message={lastMessage} />
-      <Button message="Bro!" onClick={() => sendMessage("Bro!")} />
-      <Button message="Sis!" onClick={() => sendMessage("Sis!")} />
+      {messages.map((message) => (
+        <button
+          type="button"
+          className="btn btn-primary px-4 rounded m-3 shadow-sm"
+          onClick={() => sendMessage(message)}
+          key={message}
+        >
+          {message}
+        </button>
+      ))}
+      <button
+        type="button"
+        className="btn btn-danger px-4 rounded m-3 shadow-sm"
+        onClick={onLogOut}
+      >
+        Log out
+      </button>
     </>
   );
 };
