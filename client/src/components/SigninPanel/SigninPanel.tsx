@@ -1,15 +1,12 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
-// @ts-ignore
-// import VkLogin from "react-vk-login";
 
 interface Props {
   setUserName: (s: string) => void;
-  socket: any;
 }
 
-const SigninPanel: React.FC<Props> = ({ setUserName, socket }) => {
+const SigninPanel: React.FC<Props> = ({ setUserName }) => {
   return (
     <>
       <h3>Please, sign in to send messages</h3>
@@ -28,12 +25,6 @@ const SigninPanel: React.FC<Props> = ({ setUserName, socket }) => {
         cssClass="btn btn-light px-4 rounded m-3 shadow-sm"
         textButton="Facebook"
       />
-      {/* <VkLogin
-        appId="7990349"
-        fields="name"
-        callback={(res: any) => setUserName(res.name)}
-        autoLoad={true}
-      /> */}
     </>
   );
 };

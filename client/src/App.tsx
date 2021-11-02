@@ -19,7 +19,7 @@ function App() {
         <Stats socket={socket} />
         <div className="my-5">
           {userName === null ? (
-            <SigninPanel setUserName={setUserName} socket={socket} />
+            <SigninPanel setUserName={setUserName} />
           ) : (
             <AuthorizedPanel
               userName={userName}
