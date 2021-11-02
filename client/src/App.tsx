@@ -6,7 +6,7 @@ import SigninPanel from "./components/SigninPanel/SigninPanel";
 import AuthorizedPanel from "./components/AuthorizedPanel/AuthorizedfPanel";
 import Stats from "./components/Stats/Stats";
 
-const socket = socketIO("http://localhost:5000");
+const socket = socketIO("https://bro-sis-chat.herokuapp.com/");
 
 function App() {
   const [userName, setUserName] = useState<string | null>(null);
