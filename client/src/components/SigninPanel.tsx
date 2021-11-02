@@ -10,8 +10,9 @@ interface Props {
 
 const SigninPanel: React.FC<Props> = ({ setUserName }) => {
   const googleAuth = (res: any) =>
-    res.profileObj.name && setUserName(res.profileObj.name);
-  const facebookAuth = (res: any) => res.name && setUserName(res.name);
+    res.profileObj.name ? setUserName(res.profileObj.name) : console.log(res);
+  const facebookAuth = (res: any) =>
+    res.name ? setUserName(res.name) : console.log(res);
   const VkAuth = (res: any) => console.log(res);
 
   return (
@@ -33,7 +34,7 @@ const SigninPanel: React.FC<Props> = ({ setUserName }) => {
         icon={false}
       />
       <FacebookLogin
-        appId="313394383566103"
+        appId="4695482477246123"
         callback={facebookAuth}
         cssClass="btn btn-primary px-4 rounded m-3 shadow-sm"
         textButton="Facebook"
