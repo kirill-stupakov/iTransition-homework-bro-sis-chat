@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { stats } from "../../types";
+import { stats } from "../types";
 
 interface Props {
   socket: any;
@@ -14,7 +14,7 @@ const Stats: React.FC<Props> = ({ socket }) => {
   useEffect(() => {
     socket.on("stats", (res: stats) => setStats(res));
     socket.emit("getStats");
-  }, []);
+  }, [socket]);
 
   return (
     <h5>

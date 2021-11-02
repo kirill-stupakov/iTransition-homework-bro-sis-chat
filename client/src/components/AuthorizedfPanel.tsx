@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import Message from "../Message/Message";
-import { message } from "../../types";
+import Message from "./Message";
+import { message } from "../types";
 
 interface Props {
   userName: string;
@@ -17,7 +17,7 @@ const AuthorizedPanel: React.FC<Props> = ({ userName, socket, onLogOut }) => {
     socket.on("message", (message: message) => {
       setLastMessage(message);
     });
-  }, []);
+  }, [socket]);
 
   const sendMessage = (body: string) =>
     socket.emit("message", {

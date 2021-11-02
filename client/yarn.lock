@@ -9470,10 +9470,25 @@ react-twitter-login@^1.4.0:
   dependencies:
     crypto-js "^3.1.9-1"
 
+react-vk-login-button@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-vk-login-button/-/react-vk-login-button-1.1.0.tgz#d810b397d5447a14f17f988760be52bfeb3b03f1"
+  integrity sha512-qiUKM2Gi+RA5cqfkSujP0aobVS6t4TcF2xcQQIn7CvGzwWteIbHEnvMYvRokivPiW07chxVDEEqB8H/zWC9L2A==
+
 react-vk-login@^0.0.2:
   version "0.0.2"
   resolved "https://registry.npmjs.org/react-vk-login/-/react-vk-login-0.0.2.tgz"
   integrity sha1-HNdLZJpVIq/3LRifmkJOe4oPXXc=
+
+react-vk@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/react-vk/-/react-vk-5.0.2.tgz#c590cebde365f66f154ec338fdd58cfd1d004ca6"
+  integrity sha512-fjlznPH3o4lsOyKUzOXyWmfIELtd/CR6ZOeJsOhIH3TMI/T7QH8acdEWJH9Bz2Ivd9pa/MN9WMr00G9F25TDUg==
+
+react-vkontakte-login@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/react-vkontakte-login/-/react-vkontakte-login-0.0.4.tgz#bbd0e82ae5e38698bca2302a6cdfb07813cf87d3"
+  integrity sha512-iWzCxqUXmx4/nf4ilyN2tPfr8MCPZgmizDKqTSx1vy0MiHprhx9STdMZgBY86xhhBD8zRdNEojLhfac7nXAS3g==
 
 react@^17.0.2:
   version "17.0.2"

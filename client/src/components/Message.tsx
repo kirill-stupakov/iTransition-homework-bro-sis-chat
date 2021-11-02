@@ -1,6 +1,6 @@
 import React from "react";
 
-import { message } from "../../types";
+import { message } from "../types";
 
 const isoToReadableString = (string: string) => {
   const date = new Date(string);
