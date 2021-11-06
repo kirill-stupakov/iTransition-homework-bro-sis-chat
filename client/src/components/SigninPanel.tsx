@@ -9,16 +9,22 @@ interface Props {
 }
 
 const SigninPanel: React.FC<Props> = ({ setUserName }) => {
-  const googleAuth = (res: any) =>
+  const googleAuth = (res: any) => {
+    console.log(res);
     res.profileObj ? setUserName(res.profileObj.name) : console.log(res);
-  const facebookAuth = (res: any) =>
+  };
+  const facebookAuth = (res: any) => {
+    console.log(res);
     res.name ? setUserName(res.name) : console.log(res);
-  const VkAuth = (res: any) =>
+  };
+  const VkAuth = (res: any) => {
+    console.log(res);
     res.session
       ? setUserName(
           `${res.sessin.user.first_name} ${res.session.user.last_name}`
         )
       : console.log(res);
+  };
 
   const buttonClass = "btn btn-primary px-4 rounded m-3 shadow-sm";
 
@@ -37,6 +43,7 @@ const SigninPanel: React.FC<Props> = ({ setUserName }) => {
           </button>
         )}
         onSuccess={googleAuth}
+        onFailure={(res: any) => console.log(res)}
         cookiePolicy="single_host_origin"
         icon={false}
       />
