@@ -21,6 +21,7 @@
     "react-scripts": "4.0.3",
     "react-twitter-login": "^1.4.0",
     "react-vk": "^5.0.2",
+    "react-vk-auth": "^0.0.2",
     "react-vk-login": "^0.0.2",
     "react-vk-login-button": "^1.1.0",
     "react-vkontakte-login": "^0.0.4",

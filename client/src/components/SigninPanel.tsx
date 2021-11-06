@@ -2,7 +2,7 @@ import React from "react";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 // @ts-ignore
-import VkLogin from "react-vkontakte-login";
+import VkLogin from "react-vk-auth";
 
 interface Props {
   setUserName: (s: string) => void;
@@ -10,10 +10,17 @@ interface Props {
 
 const SigninPanel: React.FC<Props> = ({ setUserName }) => {
   const googleAuth = (res: any) =>
-    res.profileObj.name ? setUserName(res.profileObj.name) : console.log(res);
+    res.profileObj ? setUserName(res.profileObj.name) : console.log(res);
   const facebookAuth = (res: any) =>
     res.name ? setUserName(res.name) : console.log(res);
-  const VkAuth = (res: any) => console.log(res);
+  const VkAuth = (res: any) =>
+    res.session
+      ? setUserName(
+          `${res.sessin.user.first_name} ${res.session.user.last_name}`
+        )
+      : console.log(res);
+
+  const buttonClass = "btn btn-primary px-4 rounded m-3 shadow-sm";
 
   return (
     <>
@@ -24,7 +31,7 @@ const SigninPanel: React.FC<Props> = ({ setUserName }) => {
           <button
             onClick={renderProps.onClick}
             disabled={renderProps.disabled}
-            className="btn btn-primary px-4 rounded m-3 shadow-sm"
+            className={buttonClass}
           >
             Google
           </button>
@@ -34,23 +41,14 @@ const SigninPanel: React.FC<Props> = ({ setUserName }) => {
         icon={false}
       />
       <FacebookLogin
-        appId="4695482477246123"
+        appId="469548247724612"
         callback={facebookAuth}
-        cssClass="btn btn-primary px-4 rounded m-3 shadow-sm"
+        cssClass={buttonClass}
         textButton="Facebook"
       />
-      <VkLogin
-        clientId="7990349"
-        callback={VkAuth}
-        render={(renderProps: any) => (
-          <button
-            onClick={renderProps.onClick}
-            className="btn btn-primary px-4 rounded m-3 shadow-sm"
-          >
-            VK
-          </button>
-        )}
-      />
+      <VkLogin apiId="7990349" callback={VkAuth} className={buttonClass}>
+        VK
+      </VkLogin>
     </>
   );
 };
