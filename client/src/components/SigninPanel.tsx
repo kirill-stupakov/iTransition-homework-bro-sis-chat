@@ -21,7 +21,7 @@ const SigninPanel: React.FC<Props> = ({ setUserName }) => {
     console.log(res);
     res.session
       ? setUserName(
-          `${res.sessin.user.first_name} ${res.session.user.last_name}`
+          `${res.session.user.first_name} ${res.session.user.last_name}`
         )
       : console.log(res);
   };
